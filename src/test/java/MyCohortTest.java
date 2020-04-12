@@ -32,6 +32,10 @@ public class MyCohortTest {
         cohortMany.addStudent(john);
         cohortMany.addStudent(ben);
 
+        grant.addGrade(100);
+        john.addGrade(50);
+        ben.addGrade(75);
+
 
 
     }
@@ -46,17 +50,19 @@ public class MyCohortTest {
 
     @Test
     public void testGetList() {
-        for(int i = 0; i < cohortOne.getStudents().size() ; i++) {
+        String[] expected = { "Grant", "John", "Ben"};
 
-            assertEquals("Emily", cohortOne.getStudents().get(i).getName());
+        for(int i = 0; i < cohortMany.getStudents().size() ; i++) {
+
+            assertEquals(expected[i], cohortMany.getStudents().get(i).getName());
         }
     }
 
     @Test
     public void testGetCohortAverage() {
-        for(int i = 0; i < cohortOne.getStudents().size() ; i++) {
+        for(int i = 0; i < cohortMany.getStudents().size() ; i++) {
 
-            assertEquals(95, cohortOne.getCohortAverage(),0);
+            assertEquals("Gets the average grade of the cohort", 75, cohortMany.getCohortAverage(),0);
         }
     }
 }
